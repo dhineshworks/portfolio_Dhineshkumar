@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #0c0c0c;
+    color: #00ff00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#matrixCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.portfolio-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 1600px;
+    align-items: stretch;
+    position: relative;
+    z-index: 2;
+}
+
+.cmd-container {
+    width: 100%;
+    flex: 1;
+    background-color: #0c0c0c;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    min-width: 500px;
+}
+
+.cmd-header {
+    background: linear-gradient(90deg, #000080, #000080);
+    color: #00ff00;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #00ff00;
+}
+
+.cmd-title {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.cmd-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.cmd-btn {
+    width: 24px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.cmd-btn:hover {
+    background-color: #00ff00;
+    color: #000080;
+}
+
+.cmd-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    background-color: #0c0c0c;
+}
+
+.terminal-content {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #00ff00;
+}
+
+.cmd-line {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 8px;
+    align-items: baseline;
+}
+
+.prompt {
+    color: #00ff00;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.command {
+    color: #00ff00;
+}
+
+.user-input {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+.output {
+    color: #00ff00;
+    margin-bottom: 16px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.cmd-keyword {
+    color: #00ffff;
+    font-weight: bold;
+}
+
+/* Scrollbar styling */
+.cmd-body::-webkit-scrollbar {
+    width: 12px;
+}
+
+.cmd-body::-webkit-scrollbar-track {
+    background: #0c0c0c;
+}
+
+.cmd-body::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 6px;
+}
+
+.cmd-body::-webkit-scrollbar-thumb:hover {
+    background: #00cc00;
+}
+
+/* Input line styling */
+.input-line {
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+}
+
+.input-line input {
+    background-color: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    outline: none;
+    flex: 1;
+    caret-color: #00ff00;
+}
+
+/* Error and success messages */
+.error {
+    color: #ff0000;
+}
+
+.success {
+    color: #00ff00;
+}
+
+/* Model styling */
+.model {
+    flex: 1;
+    min-width: 400px;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    overflow: hidden;
+}
+
+model-viewer {
+    width: 100%;
+    height: 100%;
+    display: block;
+    min-height: 600px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .portfolio-wrapper {
+        flex-direction: column;
+    }
+    
+    .model {
+        min-width: 100%;
+        height: 400px;
+    }
+    
+    model-viewer {
+        min-height: 400px;
+    }
+    
+    .cmd-container {
+        height: 600px;
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .cmd-container {
+        height: auto;
+        max-width: 100%;
+    }
+    
+    .cmd-body {
+        max-height: 400px;
+    }
+    
+    .terminal-content {
+        font-size: 12px;
+    }
+    
+    model-viewer {
+        height: 250px;
+    }
+}
